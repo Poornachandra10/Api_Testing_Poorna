@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="tests_API_Poorna.LoginTest_API_Poorna">
+        <methods>
+          <include name="AddDataTC_02"/>
+          <include name="update_Data_TC03"/>
+          <include name="login_Tc_01"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- tests_API_Poorna.LoginTest_API_Poorna -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

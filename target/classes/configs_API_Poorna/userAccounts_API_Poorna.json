@@ -1,0 +1,24 @@
+{
+  "prod": {
+    "valid": {
+      "username": "mar2023poorna@ta.com",
+      "password": "Mar231234"
+    },
+    "invalidUsername": {
+      "username": "mar123",
+      "password": "Mar231234"
+    }
+  },
+  
+  "invalidPassword": {
+    "valid": {
+      "username": "mar2023poorna@ta.com",
+      "password": "Mar231234"
+    },
+    "invalidBoth": {
+      "username": "mar123",
+      "password": "Mar231234"
+    }
+  }
+  }
+ 
