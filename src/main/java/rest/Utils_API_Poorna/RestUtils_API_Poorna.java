@@ -102,5 +102,16 @@ public class RestUtils_API_Poorna {
 		Response res=RestAssured.given().headers(header).when().body(payload).delete();
 		return res;
 	}
+	public Response taLogout(String sBaseUri,HashMap<String, String> header) {
+		RestAssured.baseURI=sBaseUri;
+		logger.debug("Baseuri");   
+		System.out.println(sBaseUri);
+		RestAssured.useRelaxedHTTPSValidation();
+		Response res = RestAssured.given().headers(header).when().post();
+		
+		//		.then().statusCode(201).extract().response();
+	
+	return res;
+	}
 	
 }

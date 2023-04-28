@@ -105,20 +105,61 @@ public class LoginTest_API_Poorna extends BaseTest_API_POORNA {
 		System.out.println(res.asPrettyString());
 
 	}
-	
-	@Test (dependsOnMethods="AddDataTC_02")
+
+	@Test(enabled = false) // (dependsOnMethods="AddDataTC_02")
 	public void getDataTC04() throws IOException {
-		String sEnv=DataUtils_API_Poorna.readJsonFiletoString(FileConstants_API_Poorna.ENV_URI_API_POORNA_FILE_PATH);
-		String sUri=JsonPath.read(sEnv,"$.prod.URL");
-		sUri=sUri+JsonPath.read(sEnv, "$.prod.endpoint.getdata");
+		String sEnv = DataUtils_API_Poorna.readJsonFiletoString(FileConstants_API_Poorna.ENV_URI_API_POORNA_FILE_PATH);
+		String sUri = JsonPath.read(sEnv, "$.prod.URL");
+		sUri = sUri + JsonPath.read(sEnv, "$.prod.endpoint.getdata");
 		logger.debug("entered login url and end point");
-		HashMap<String, String> headers=new HashMap<String, String>();
+		HashMap<String, String> headers = new HashMap<String, String>();
 		headers.put("Content-Type", "application/json");
 		headers.put("token", token);
 		logger.debug("entered headers");
-		//HashMap<String, String> payLoad=new HashMap<String, String>();
-		Response res=oRestUtil.taget(sUri, headers);
+
+		Response res = oRestUtil.taget(sUri, headers);
 		System.out.println(res.asPrettyString());
-		
+
+	}
+
+	@Test
+	public void delete_Data() throws IOException {
+		String sEnv = DataUtils_API_Poorna.readJsonFiletoString(FileConstants_API_Poorna.ENV_URI_API_POORNA_FILE_PATH);
+		String sUri = JsonPath.read(sEnv, "$.prod.URL");
+		sUri = sUri + JsonPath.read(sEnv, "$.prod.endpoint.deletedata");
+		logger.debug("entered login url and end point");
+
+		HashMap<String, String> headers = new HashMap<String, String>();
+		headers.put("Content-Type", "application/json");
+		headers.put("token", token);
+		logger.debug("entered headers");
+
+		// taDelete(String sBaseUri, HashMap<String, String>header, HashMap<String,
+		// String>payload) {
+		HashMap<String, String> payLoad = new HashMap<String, String>();
+		payLoad.put("accountno", "19009913");
+		payLoad.put("departmentno", "4");
+		payLoad.put("salary", "123432");
+		payLoad.put("pincode", "641046");
+		Response res = oRestUtil.taDelete(sUri, headers, payLoad);
+		System.out.println(res.asPrettyString());
+
+	}
+	
+	
+	@Test
+	public void logout() throws IOException {
+		String sEnv = DataUtils_API_Poorna.readJsonFiletoString(FileConstants_API_Poorna.ENV_URI_API_POORNA_FILE_PATH);
+		String sUri = JsonPath.read(sEnv, "$.prod.URL");
+		sUri = sUri + JsonPath.read(sEnv, "$.prod.endpoint.logout");
+		logger.debug("entered login url and end point");
+
+		HashMap<String, String> headers = new HashMap<String, String>();
+		headers.put("Content-Type", "application/json");
+		headers.put("token", token);
+		logger.debug("entered headers");
+		Response res = oRestUtil.taLogout(sUri, headers);
+		System.out.println(res.asPrettyString());
+
 	}
 }
